@@ -4,5 +4,5 @@
 
 struct BinaryDataGen
 {
-	BinaryDataGen(const char*);
+	BinaryDataGen(const char*) noexcept(false);
 };

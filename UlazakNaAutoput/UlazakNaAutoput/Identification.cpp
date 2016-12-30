@@ -1,21 +1,39 @@
+#define _SCL_SECURE_NO_WARNINGS
 #include "Identification.h"
 
 Identification::Identification(const char* fileName) noexcept(false)
 {
-	std::streampos size; //Size of file
-	char* memblock; //Saves the content of the file into memblock
-
-	std::fstream file(fileName, std::ios::in | std::ios::binary | std::ios::ate);//Loading fileName in binary mode and setting the position pointer at the end of the file to obtain file size
+	std::ifstream file(fileName, std::ios::binary | std::ios::ate);//Loading fileName in binary mode and setting current character position to end to get size
+	
 	if (!file.is_open()) throw std::ios::badbit;
 
-	size = file.tellg(); //Returns position of current character which is at the end, thus obtaining file size
-	memblock = new char[size];//Allocating memory block to hold data from file
-
-	file.seekg(0, std::ios::beg);//Sets the current character poitner ot the beggining
-	file.read(memblock, size);//Copies file content into memblock
-	file.close();//Finishes operations with file
-
+	struct
+	{
+		unsigned long idToWrite;
+		char hashToWrite[65];
+	}toRead;
 	
+	size_t numberofRecords = file.tellg() / sizeof(toRead); //Gets amount of records by dividing total size by record size
+	file.seekg(0);//Sets current character position to start of file
 
-	delete memblock;
+	for (int i = 0; i < numberofRecords; i++)
+	{
+		file.read((char *)&toRead, sizeof(toRead));//Reads binary data from file and puts it into toRead
+		userList.push_back(std::make_tuple(toRead.idToWrite, toRead.hashToWrite));//Pushes data to vector
+	}
+
+	file.close();//Finishes operations with file
+	
+}
+
+void Identification::write() const noexcept
+{
+	for (auto i : userList)
+		std::cout << std::get<0>(i) << " " << std::get<1>(i) << std::endl;
+}
+
+bool Identification::operator==(std::tuple<unsigned long, std::string>) const noexcept
+{
+	//TODO: Add comparison operator
+	return false;
 }

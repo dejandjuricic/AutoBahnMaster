@@ -10,4 +10,6 @@ public:
 	Identification() = delete;
 	Identification(const Identification&) = delete;
 	Identification(Identification&&) = delete;
+	void write()const noexcept;
+	bool operator==(std::tuple<unsigned long, std::string>)const noexcept;
 };
