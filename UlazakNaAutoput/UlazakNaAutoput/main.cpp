@@ -7,10 +7,10 @@ int main(int argc, char* argv[])
 	try
 	{
 		BinaryDataGen gen("mmm.bin");
-		Identification user("mmm.bin");
-		user.write();
+		ABM::Identification userList("mmm.bin");
+		userList.write();
 
-		ABMReceipt issuer;
+		ABM::ABMReceipt issuer;
 		
 		issuer.issue();
 
