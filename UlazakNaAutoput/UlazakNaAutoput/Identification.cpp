@@ -1,4 +1,5 @@
 #define _SCL_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS //TODO: fix no warnings errors
 #include "Identification.h"
 
 namespace ABM

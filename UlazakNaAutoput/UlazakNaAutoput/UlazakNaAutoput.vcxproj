@@ -113,12 +113,16 @@
     <ClCompile Include="BinaryDataGen.cpp" />
     <ClCompile Include="Identification.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Receipt.cpp" />
     <ClCompile Include="sha256.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryDataGen.h" />
     <ClInclude Include="Identification.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="sha256.h" />
     <ClInclude Include="stdHeader.h" />
     <ClInclude Include="Receipt.h" />
