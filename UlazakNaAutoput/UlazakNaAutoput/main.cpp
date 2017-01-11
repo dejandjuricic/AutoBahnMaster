@@ -40,11 +40,18 @@ int main(int argc, char* argv[])
 
 		std::vector<std::string> sr({ "srdjane", "izdajico", "izdao", "si", "srbiju" });
 
+		/*std::cout << data.addEntry(sr) << std::endl;
 		std::cout << data.addEntry(sr) << std::endl;
 		std::cout << data.addEntry(sr) << std::endl;
 		std::cout << data.addEntry(sr) << std::endl;
-		std::cout << data.addEntry(sr) << std::endl;
-		std::cout << data.addEntry(sr) << std::endl;
+		std::cout << data.addEntry(sr) << std::endl;*/
+
+		for (int j = 0; j < data.size(); j++)
+		{
+			for (auto i : data[4])
+				std::cout << i << " ";
+			std::cout << std::endl;
+		}
 	}
 	catch (std::exception& e)
 	{

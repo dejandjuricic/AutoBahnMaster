@@ -9,5 +9,6 @@ class CSVData //Comma seperated values data for database
 public:
 	CSVData(const char*) noexcept(false);
 	unsigned long addEntry(std::vector<std::string>) noexcept(false);
-	
+	std::vector<std::string> operator[](int) noexcept(false);
+	int size() const noexcept;
 };
