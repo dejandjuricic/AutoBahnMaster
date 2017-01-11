@@ -6,10 +6,10 @@
 
 int main(int argc, char* argv[])
 {
-	/*try
+	try
 	{
-		BinaryDataGen gen("mmm.bin");
-		ABM::Identification userList("mmm.bin");
+		//BinaryDataGen gen("mmm.bin");
+		ABM::Identification userList("users.bin");
 		userList.write();
 
 		ABM::ABMReceipt issuer;
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 	catch (std::exception& e)
 	{
 		std::cout << e.what();
-	}*/
+	}
 
 	/*ABM::Menu a({ "Register new vehicle", "New receipt", "Change user", "Print out statistics" });
 	std::cout << "You have choosen item: " << a.call() + 1 << std::endl;*/
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 
 		for (int j = 0; j < data.size(); j++)
 		{
-			for (auto i : data[4])
+			for (auto i : data[j])
 				std::cout << i << " ";
 			std::cout << std::endl;
 		}

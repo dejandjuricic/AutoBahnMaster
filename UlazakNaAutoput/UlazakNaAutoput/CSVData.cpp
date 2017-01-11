@@ -1,9 +1,7 @@
 #include "CSVData.h"
 
-CSVData::CSVData(const char * fileName) noexcept(false) : name(fileName), numofEntries(-1)
+CSVData::CSVData(const char * fileName) noexcept(false) : name(fileName), numofEntries(-1), file(std::fstream(fileName))
 {
-	file = std::fstream(fileName); //Sets file to output mode
-
 	if (!file.is_open()) throw std::ios::badbit;
 	std::string temp;//Temporary string for getline
 

@@ -12,3 +12,4 @@
 #include <cstdlib>
 #include <exception>
 #include <stdexcept>
+#include <typeinfo>
