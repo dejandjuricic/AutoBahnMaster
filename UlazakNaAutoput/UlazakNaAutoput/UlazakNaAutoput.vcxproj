@@ -111,6 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryDataGen.cpp" />
+    <ClCompile Include="CSVData.cpp" />
     <ClCompile Include="Identification.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -120,6 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryDataGen.h" />
+    <ClInclude Include="CSVData.h" />
+    <ClInclude Include="FailedLogin.h" />
     <ClInclude Include="Identification.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Node.h" />

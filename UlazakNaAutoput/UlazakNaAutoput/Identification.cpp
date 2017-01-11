@@ -35,26 +35,5 @@ namespace ABM
 			std::cout << std::get<0>(i) << " " << std::get<1>(i) << std::endl;
 	}
 
-	bool Identification::operator==(std::tuple<unsigned long, std::string>) const noexcept
-	{
-		//TODO: Add comparison operator
-		return false;
-	}
 
-
-
-	void User::login(Identification userList, std::tuple<unsigned long, std::string> user) noexcept(false)
-	{
-		if (userList == user)//If user exists and password is valid save user data and time of login
-		{
-			userID = std::get<0>(user);
-			username = std::get<1>(user);
-			ctime(&timeofLogin);
-		}
-		else throw "Invalid username and/or password";
-	}
-	User::User(Identification, unsigned long, std::string) noexcept(false)
-	{
-		//TODO: Implement constructor
-	}
 }

@@ -15,14 +15,4 @@ namespace ABM
 		void write()const noexcept;
 		bool operator==(std::tuple<unsigned long, std::string>)const noexcept;
 	};
-
-	class User
-	{
-		unsigned long userID;
-		std::string username;
-		time_t timeofLogin;
-		void login(Identification, std::tuple<unsigned long, std::string>) noexcept(false);
-	public:
-		User(Identification, unsigned long, std::string) noexcept(false);
-	};
 }
