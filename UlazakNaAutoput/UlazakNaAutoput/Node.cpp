@@ -1,6 +1,26 @@
 #include "Node.h"
 
-ABM::Node::Node(std::string nodeName, unsigned long nodeID, std::vector<std::tuple<Node, long double>> connections) noexcept : nodeName(nodeName), nodeID(nodeID), connections(connections) {}
+ABM::Node::Node(std::string nodeName, unsigned long nodeID) noexcept : nodeName(nodeName), nodeID(nodeID) {}
+
+std::string ABM::Node::name() const noexcept
+{
+	return nodeName;
+}
+
+unsigned long ABM::Node::id() const noexcept
+{
+	return nodeID;
+}
+
+unsigned long ABM::Node::counter() const noexcept
+{
+	return vehicleCounter;
+}
+
+void ABM::Node::operator++() noexcept
+{
+	vehicleCounter++;
+}
 
 ABM::NodeNetwork::NodeNetwork()
 {
@@ -11,4 +31,13 @@ ABM::NodeNetwork::NodeNetwork()
 	{
 
 	}
+}
+
+ABM::Booth::Booth(std::string name, unsigned long id) noexcept : Node(name, id) {}
+ABM::Intersection::Intersection(std::string name, unsigned long id) noexcept : Node(name, id) {}
+
+std::ostream & ABM::operator<<(std::ostream& stream, const Node& data)
+{
+	return stream;
+	//return stream<<"typeid(data).name()<<
 }

@@ -1,19 +1,4 @@
 #include "Menu.h"
-//Codes for keystrokes
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-#define KEY_ENTER 13
-
-void ABM::Menu::clearScreen() const noexcept
-{
-#ifdef _WIN32 //Check if OS is Windows
-	std::system("cls");
-#else //Else assume UNIX based OS
-	std::system("clear");
-#endif
-}
 
 ABM::Menu::Menu(std::initializer_list<std::string> list) noexcept(false) : menuItems(list) {}
 
@@ -23,18 +8,8 @@ int ABM::Menu::call()
 	char c;//Keystroke temporary variable
 	int numofItems = menuItems.size();//Get number of items
 
-	//ASCII CODES
-	char topLeft = 0xC9;
-	char topRight = 0xBB;
-	char bottomRight = 0xBC;
-	char bottomLeft = 0xC8;
-	char vert = 0xBA;
-	char hor = 0xCD;
-
 	//Finding the length of the longest string
-	int longestString = 0;
-	for (auto i : menuItems)
-		if (i.length() > longestString) longestString = i.length();
+	int longestString = longestStr(menuItems);
 
 	while (true)//Starts the menu loop
 	{

@@ -39,6 +39,12 @@
     <ClCompile Include="CSVData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stdHeader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdHeader.h">
@@ -66,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CSVData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -112,16 +112,19 @@
   <ItemGroup>
     <ClCompile Include="BinaryDataGen.cpp" />
     <ClCompile Include="CSVData.cpp" />
+    <ClCompile Include="DialogBox.cpp" />
     <ClCompile Include="Identification.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Receipt.cpp" />
     <ClCompile Include="sha256.cpp" />
+    <ClCompile Include="stdHeader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryDataGen.h" />
     <ClInclude Include="CSVData.h" />
+    <ClInclude Include="DialogBox.h" />
     <ClInclude Include="FailedLogin.h" />
     <ClInclude Include="Identification.h" />
     <ClInclude Include="Menu.h" />

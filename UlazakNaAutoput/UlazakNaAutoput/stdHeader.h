@@ -13,3 +13,26 @@
 #include <exception>
 #include <stdexcept>
 #include <typeinfo>
+
+//standard functions
+void clearScreen() noexcept;
+int longestStr(std::vector<std::string>&) noexcept;
+
+//standard values
+
+/*ASCII codes*/
+const unsigned char topLeft = 0xC9;
+const unsigned char topRight = 0xBB;
+const unsigned char bottomRight = 0xBC;
+const unsigned char bottomLeft = 0xC8;
+const unsigned char vert = 0xBA;
+const unsigned char hor = 0xCD;
+const unsigned char vertL = 0xCC;
+const unsigned char vertR = 0xB9;
+
+/*Keystroke codes*/
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_ENTER 13

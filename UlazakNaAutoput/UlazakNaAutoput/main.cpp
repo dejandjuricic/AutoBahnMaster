@@ -3,10 +3,11 @@
 #include "Receipt.h"
 #include "Menu.h"
 #include "CSVData.h"
+#include "DialogBox.h"
 
 int main(int argc, char* argv[])
 {
-	try
+	/*try
 	{
 		//BinaryDataGen gen("mmm.bin");
 		ABM::Identification userList("users.bin");
@@ -23,8 +24,8 @@ int main(int argc, char* argv[])
 		std::cout << e.what();
 	}
 
-	/*ABM::Menu a({ "Register new vehicle", "New receipt", "Change user", "Print out statistics" });
-	std::cout << "You have choosen item: " << a.call() + 1 << std::endl;*/
+	ABM::Menu a({ "Register new vehicle", "New receipt", "Change user", "Print out statistics" });
+	std::cout << "You have choosen item: " << a.call() + 1 << std::endl;
 
 	try
 	{
@@ -40,11 +41,11 @@ int main(int argc, char* argv[])
 
 		std::vector<std::string> sr({ "srdjane", "izdajico", "izdao", "si", "srbiju" });
 
-		/*std::cout << data.addEntry(sr) << std::endl;
 		std::cout << data.addEntry(sr) << std::endl;
 		std::cout << data.addEntry(sr) << std::endl;
 		std::cout << data.addEntry(sr) << std::endl;
-		std::cout << data.addEntry(sr) << std::endl;*/
+		std::cout << data.addEntry(sr) << std::endl;
+		std::cout << data.addEntry(sr) << std::endl;
 
 		for (int j = 0; j < data.size(); j++)
 		{
@@ -59,7 +60,9 @@ int main(int argc, char* argv[])
 	}
 
 
+	*/
 
+	ABM::DialogBox("test asdadw adwdaw adwaw");
 
 	system("pause");
 }
