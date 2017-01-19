@@ -36,18 +36,8 @@ namespace ABM
 						throw RegistrationError({ "Invalid character in username", "Only dots and alphanumeric characters are allowed." });
 				}
 
+				if (doesUsernameExist(file, userName) != -1) throw RegistrationError({ "Username already exists, try using another one." });
 				
-				char tempUsername[26];
-				char tempPassword[65];
-				file.seekg(0);
-				while (file.read(tempUsername, 26)) //Checking if the username already exists
-				{
-					if (userName == tempUsername) throw RegistrationError({ "Username already in use. Please try using somethig else." });
-					file.read(tempPassword, 65);
-				}
-				file.clear(); // Clears the EOF flag from the file
-				file.seekg(0, std::ios::end); //Moves file cursor to the end
-
 				std::cout << "Password: ";
 				std::string password;
 

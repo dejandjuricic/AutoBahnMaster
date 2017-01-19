@@ -18,6 +18,7 @@
 //standard functions
 void clearScreen() noexcept;
 int longestStr(std::vector<std::string>&) noexcept;
+int doesUsernameExist(std::fstream&, std::string&) noexcept;
 
 //standard values
 
