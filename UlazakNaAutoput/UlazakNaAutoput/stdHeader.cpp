@@ -25,7 +25,7 @@ int doesUsernameExist(std::fstream & file, std::string& userName) noexcept
 	while (file.read(tempUsername, 26)) //Checking if the username already exists
 	{
 		if (userName == tempUsername) return file.tellg();
-		file.read(tempPassword, 65);
+		file.read(tempPassword, 65); //Skips the password and moves on to the next username
 	}
 	file.clear(); // Clears the EOF flag from the file
 	file.seekg(0, std::ios::end); //Moves file cursor to the end

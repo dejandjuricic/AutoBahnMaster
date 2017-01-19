@@ -54,3 +54,11 @@ public:
 
 	RegistrationError(std::initializer_list<std::string>);
 };
+
+//Commonly used structs
+
+struct ToWrite
+{
+	char userName[26];
+	char password[65];//Size is one bigger to accomodate string terminator
+};

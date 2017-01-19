@@ -4,17 +4,18 @@ namespace ABM
 {
 	BinaryDataGen::BinaryDataGen(const char* fileName) noexcept(false)
 	{
-		struct ToWrite
-		{
-			char userName[26];
-			char password[65];//Size is one bigger to accomodate string terminator
-		}toWrite;
+		
 
 		std::fstream file(fileName,std::ios::in | std::ios::out | std::ios::binary );//Opening file in binary mode
 
-		if (!file.is_open()) throw std::ios::badbit;
+		if (!file.is_open()) //Checks if the file is open, if it's not, creates a new file
+		{
+			
+			file.open(fileName, std::ios::out);
+		}
 
-		bool flag = true;
+		bool flag = true; //Flag used for checking if register input is valid
+
 		while (flag)
 		{
 			try
@@ -73,6 +74,7 @@ namespace ABM
 
 				password = sha256(password);//Using sha256 algortihm to hash the password
 
+				ToWrite toWrite;
 				strncpy_s(toWrite.userName, userName.c_str(), _TRUNCATE);
 				strncpy_s(toWrite.password, password.c_str(), _TRUNCATE);
 
