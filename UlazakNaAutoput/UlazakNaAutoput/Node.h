@@ -41,8 +41,25 @@ namespace ABM
 	class NodeNetwork
 	{
 		std::vector<Node> nodeList;
-		std::vector<std::vector<Node>> distanceMatrix;
 	public:
 		NodeNetwork();
+		//TODO: implement creation of adjacent matrix
+		/*Each node should have its id, all ids should be
+		sequential, after inputing all nodes, NodeNetwork
+		should load the node network from a csv file,
+		if the file does not exist create a new file
+		in which ids of nodes represent columns and rows
+		(they are not written isnide of the csv file)
+		and they should contain distances between nodes
+		which are inputted like:
+		cout<<nodeID
+		cout<<nodeName
+		then start inputting like
+		cout<<nodeID<<"->
+		and input the other nodeID, check if the ID
+		exists and if it exists allow input of a float
+		that represents distance and update the adjacent
+		matrix accordingly, if you input the same node
+		ID it stops the input*/
 	};
 }
