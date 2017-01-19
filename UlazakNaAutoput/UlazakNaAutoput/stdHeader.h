@@ -19,6 +19,8 @@
 void clearScreen() noexcept;
 int longestStr(std::vector<std::string>&) noexcept;
 int doesUsernameExist(std::fstream&, std::string&) noexcept;
+std::string maskedInput() noexcept;
+bool isAlphaNumeric(char) noexcept;
 
 //standard values
 

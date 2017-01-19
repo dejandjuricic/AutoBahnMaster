@@ -20,35 +20,7 @@ ABM::Login::Login(const char * fileName) noexcept(false)
 			std::getline(std::cin, userName);//Get entire line
 
 			std::cout << "Password: ";
-			std::string password;
-			
-			//Masking password input
-			char c = 0;
-
-			while (c != '\r' && c != '\n') //While the character is not end of line or carriage return do
-			{
-				c = _getch();//Get character from console
-				switch (c)
-				{
-				case KEY_BACKSPACE://If it is backspace go back one character, print an empty one over the old one and go one back again
-					if (password.length())//Dont delete * if there are no present
-					{
-						std::cout << '\b';
-						std::cout << ' ';
-						std::cout << '\b';
-						password.pop_back();//Removes last character form string
-					}
-					break;
-				default:
-					if (isalnum(c))//Chekcs if character is a character
-					{
-						std::cout << '*';//Mask every input with *
-						password += c;//Add the real input to password
-					}
-					break;
-				}
-			}
-
+			std::string password = maskedInput();
 			password = sha256(password);//Using sha256 algortihm to hash the password
 
 			int exists = doesUsernameExist(file, userName);
