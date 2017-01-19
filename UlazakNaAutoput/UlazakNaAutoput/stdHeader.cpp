@@ -33,6 +33,43 @@ int doesUsernameExist(std::fstream & file, std::string& userName) noexcept
 	return -1;
 }
 
+std::string maskedInput() noexcept //Masking input, used mostly for password input
+{
+	std::string input;
+	char c = 0;
+
+	while (c != '\r' && c != '\n') //While the character is not end of line or carriage return do
+	{
+		c = _getch();//Get character from console
+		switch (c)
+		{
+		case KEY_BACKSPACE://If it is backspace go back one character, print an empty one over the old one and go one back again
+			if (input.length())//Dont delete * if there are no present
+			{
+				std::cout << '\b';
+				std::cout << ' ';
+				std::cout << '\b';
+				input.pop_back();//Removes last character form string
+			}
+			break;
+		default:
+			if (c>=32 && c<=126)//Chekcs if character is a valid password character
+			{
+				std::cout << '*';//Mask every input with *
+				input += c;//Add the real input to password
+			}
+			break;
+		}
+	}
+
+	return input;
+}
+
+bool isAlphaNumeric(char c) noexcept
+{
+	return (c >= 48 && c <= 57)||(c >= 65 && c <= 90)||(c >= 97 && c <= 122);
+}
+
 
 
 const char * userException::what() const
