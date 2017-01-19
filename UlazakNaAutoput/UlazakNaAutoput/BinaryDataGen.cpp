@@ -4,13 +4,13 @@ namespace ABM
 {
 	BinaryDataGen::BinaryDataGen(const char* fileName) noexcept(false)
 	{
-		struct
+		struct ToWrite
 		{
 			char userName[26];
 			char password[65];//Size is one bigger to accomodate string terminator
 		}toWrite;
 
-		std::ofstream file(fileName, std::ios::out | std::ios::binary | std::ios::app);//Opening file append, binary mode
+		std::fstream file(fileName,std::ios::in | std::ios::out | std::ios::binary );//Opening file in binary mode
 
 		if (!file.is_open()) throw std::ios::badbit;
 
@@ -35,6 +35,18 @@ namespace ABM
 					if (!(isalnum(i) || i == '.') && i == ' ')//Characters is not alfanumeric etc.
 						throw RegistrationError({ "Invalid character in username", "Only dots and alphanumeric characters are allowed." });
 				}
+
+				
+				char tempUsername[26];
+				char tempPassword[65];
+				file.seekg(0);
+				while (file.read(tempUsername, 26)) //Checking if the username already exists
+				{
+					if (userName == tempUsername) throw RegistrationError({ "Username already in use. Please try using somethig else." });
+					file.read(tempPassword, 65);
+				}
+				file.clear(); // Clears the EOF flag from the file
+				file.seekg(0, std::ios::end); //Moves file cursor to the end
 
 				std::cout << "Password: ";
 				std::string password;
