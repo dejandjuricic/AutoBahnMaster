@@ -37,6 +37,7 @@ const unsigned char vertR = 0xB9;
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_ENTER 13
+#define KEY_BACKSPACE 8
 
 //standard exceptions
 struct LoginError : virtual public std::exception

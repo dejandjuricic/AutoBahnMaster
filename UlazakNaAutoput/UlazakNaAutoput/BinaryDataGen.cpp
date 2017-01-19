@@ -39,7 +39,32 @@ namespace ABM
 				std::cout << "Password: ";
 				std::string password;
 
-				std::getline(std::cin, password);//Get entire line
+				//Masking password input
+				char c = 0;
+
+				while (c != '\r' && c!= '\n') //While the character is not end of line or carriage return do
+				{
+					c = _getch();//Get character from console
+					switch (c)
+					{
+					case KEY_BACKSPACE://If it is backspace go back one character, print an empty one over the old one and go one back again
+						if (password.length())//Dont delete * if there are no present
+						{
+							std::cout << '\b';
+							std::cout << ' ';
+							std::cout << '\b';
+							password.pop_back();//Removes last character form string
+						}
+						break;
+					default:
+						if (isalnum(c))//Chekcs if character is a character
+						{
+							std::cout << '*';//Mask every input with *
+							password += c;//Add the real input to password
+						}
+						break;
+					}
+				}
 
 				if (password.length() < 6)
 					throw RegistrationError({ "Password too short.", "Password must have more than 6 characters." });
