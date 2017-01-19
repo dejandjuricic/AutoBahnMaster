@@ -41,16 +41,20 @@ const unsigned char vertR = 0xB9;
 #define KEY_BACKSPACE 8
 
 //standard exceptions
-struct LoginError : virtual public std::exception
-{
-	virtual const char* what() const override;
-};
-class RegistrationError : virtual public std::exception
+class userException : virtual public std::exception
 {
 	std::vector<std::string> message;
 public:
 	virtual const char* what() const override;
 	std::vector<std::string> list() const;
 
-	RegistrationError(std::initializer_list<std::string>);
+	userException(std::initializer_list<std::string>);
+};
+
+//Commonly used structs
+
+struct ToWrite
+{
+	char userName[26];
+	char password[65];//Size is one bigger to accomodate string terminator
 };
