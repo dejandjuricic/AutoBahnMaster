@@ -16,3 +16,25 @@ int longestStr(std::vector<std::string>& vec) noexcept
 		if (i.length() > result) result = i.length();
 	return result;
 }
+
+const char* LoginError::what() const
+{
+	return "Login Error";
+}
+
+const char * RegistrationError::what() const
+{
+	std::string returner;
+
+	for (auto i : message)
+		returner += i + '\n';
+
+	return returner.c_str();
+}
+
+std::vector<std::string> RegistrationError::list() const
+{
+	return message;
+}
+
+RegistrationError::RegistrationError(std::initializer_list<std::string> l) : message(l) {}

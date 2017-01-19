@@ -42,6 +42,12 @@ void ABM::DialogBox::draw(std::vector<std::string> list) noexcept
 	for (int i = 0; i <= longestString + 1; i++)
 		std::cout << hor;
 	std::cout << bottomRight << std::endl;
+
+	//Waiting for input to continue
+	std::string temp;
+	std::getline(std::cin, temp);
+
+	clearScreen();
 }
 
 void ABM::DialogBox::drawLine() const noexcept

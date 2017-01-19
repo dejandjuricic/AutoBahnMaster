@@ -61,8 +61,8 @@ int main(int argc, char* argv[])
 
 
 	*/
-
-	ABM::DialogBox("test asdadw adwdaw adwaw");
+	ABM::BinaryDataGen x("users.dat");
+	
 
 	system("pause");
 }

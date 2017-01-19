@@ -13,6 +13,7 @@
 #include <exception>
 #include <stdexcept>
 #include <typeinfo>
+#include <limits>
 
 //standard functions
 void clearScreen() noexcept;
@@ -36,3 +37,18 @@ const unsigned char vertR = 0xB9;
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_ENTER 13
+
+//standard exceptions
+struct LoginError : virtual public std::exception
+{
+	virtual const char* what() const override;
+};
+class RegistrationError : virtual public std::exception
+{
+	std::vector<std::string> message;
+public:
+	virtual const char* what() const override;
+	std::vector<std::string> list() const;
+
+	RegistrationError(std::initializer_list<std::string>);
+};

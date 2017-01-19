@@ -1,8 +1,12 @@
 #pragma once
 #include "stdHeader.h"
 #include "sha256.h"
+#include "DialogBox.h"
 
-struct BinaryDataGen
+namespace ABM
 {
-	BinaryDataGen(const char*) noexcept(false);
-};
+	struct BinaryDataGen
+	{
+		BinaryDataGen(const char*) noexcept(false);
+	};
+}

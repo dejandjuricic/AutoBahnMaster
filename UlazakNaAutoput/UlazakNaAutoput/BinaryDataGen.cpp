@@ -1,30 +1,63 @@
 #include "BinaryDataGen.h"
 
-BinaryDataGen::BinaryDataGen(const char* fileName) noexcept(false)
+namespace ABM
 {
-	std::cout << "Enter number of users: ";
-	int numofUsers;
-	std::cin >> numofUsers;
-
-	struct
+	BinaryDataGen::BinaryDataGen(const char* fileName) noexcept(false)
 	{
-		unsigned long idToWrite;
-		char hashToWrite[65];//Size is one bigger to accomodate string terminator
-	}toWrite;
+		struct
+		{
+			char userName[26];
+			char password[65];//Size is one bigger to accomodate string terminator
+		}toWrite;
 
-	std::ofstream file(fileName, std::ios::out | std::ios::binary);//Opening file in input binary mode
+		std::ofstream file(fileName, std::ios::out | std::ios::binary | std::ios::app);//Opening file append, binary mode
 
-	if (!file.is_open()) throw std::ios::badbit;
+		if (!file.is_open()) throw std::ios::badbit;
 
-	for (int i = 0; i < numofUsers; i++)
-	{
-		std::cout << "User ID (numerical): ";
-		std::cin >> toWrite.idToWrite;
-		std::cout << "User password: ";
-		std::cin >> toWrite.hashToWrite;
-		strncpy_s(toWrite.hashToWrite, sha256(toWrite.hashToWrite).c_str(), _TRUNCATE);//Using sha256 algortihm to hash the password
-		file.write((char *)&toWrite, sizeof(toWrite));//Writes struct toWrite into data
+		bool flag = true;
+		while (flag)
+		{
+			try
+			{
+				std::cout << "Username: ";
+				std::string userName;
+
+				std::getline(std::cin, userName);//Get entire line
+
+				//Checking for input errors
+				if (userName.length() > 25)
+					throw RegistrationError({ "Username too long." ,"Username must be between 6 and 25 characters." });
+				if (userName.length() < 6)
+					throw RegistrationError({ "Username too short.", "Username must be between 6 and 25 characters." });
+
+				for (auto i : userName)//Cheking string for invalid characters
+				{
+					if (!(isalnum(i) || i == '.') && i == ' ')//Characters is not alfanumeric etc.
+						throw RegistrationError({ "Invalid character in username", "Only dots and alphanumeric characters are allowed." });
+				}
+
+				std::cout << "Password: ";
+				std::string password;
+
+				std::getline(std::cin, password);//Get entire line
+
+				if (password.length() < 6)
+					throw RegistrationError({ "Password too short.", "Password must have more than 6 characters." });
+
+				password = sha256(password);//Using sha256 algortihm to hash the password
+
+				strncpy_s(toWrite.userName, userName.c_str(), _TRUNCATE);
+				strncpy_s(toWrite.password, password.c_str(), _TRUNCATE);
+
+				file.write((char *)&toWrite, sizeof(toWrite));//Writes struct toWrite into data
+				flag = false;
+			}
+			catch (RegistrationError& e)
+			{
+				DialogBox(e.list());
+			}
+		}
+
+		file.close();
 	}
-
-	file.close();
 }
