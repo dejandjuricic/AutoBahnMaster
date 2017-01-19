@@ -113,7 +113,6 @@
     <ClCompile Include="BinaryDataGen.cpp" />
     <ClCompile Include="CSVData.cpp" />
     <ClCompile Include="DialogBox.cpp" />
-    <ClCompile Include="Identification.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -127,7 +126,6 @@
     <ClInclude Include="CSVData.h" />
     <ClInclude Include="DialogBox.h" />
     <ClInclude Include="FailedLogin.h" />
-    <ClInclude Include="Identification.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Node.h" />

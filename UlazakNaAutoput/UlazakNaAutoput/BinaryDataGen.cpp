@@ -26,17 +26,17 @@ namespace ABM
 
 				//Checking for input errors
 				if (userName.length() > 25)
-					throw RegistrationError({ "Username too long." ,"Username must be between 6 and 25 characters." });
+					throw userException({ "Username too long." ,"Username must be between 6 and 25 characters." });
 				if (userName.length() < 6)
-					throw RegistrationError({ "Username too short.", "Username must be between 6 and 25 characters." });
+					throw userException({ "Username too short.", "Username must be between 6 and 25 characters." });
 
 				for (auto i : userName)//Cheking string for invalid characters
 				{
 					if (!(isalnum(i) || i == '.') && i == ' ')//Characters is not alfanumeric etc.
-						throw RegistrationError({ "Invalid character in username", "Only dots and alphanumeric characters are allowed." });
+						throw userException({ "Invalid character in username", "Only dots and alphanumeric characters are allowed." });
 				}
 
-				if (doesUsernameExist(file, userName) != -1) throw RegistrationError({ "Username already exists, try using another one." });
+				if (doesUsernameExist(file, userName) != -1) throw userException({ "Username already exists, try using another one." });
 				
 				std::cout << "Password: ";
 				std::string password;
@@ -69,7 +69,7 @@ namespace ABM
 				}
 
 				if (password.length() < 6)
-					throw RegistrationError({ "Password too short.", "Password must have more than 6 characters." });
+					throw userException({ "Password too short.", "Password must have more than 6 characters." });
 
 				password = sha256(password);//Using sha256 algortihm to hash the password
 
@@ -79,7 +79,7 @@ namespace ABM
 				file.write((char *)&toWrite, sizeof(toWrite));//Writes struct toWrite into data
 				flag = false;
 			}
-			catch (RegistrationError& e)
+			catch (userException& e)
 			{
 				DialogBox(e.list());
 			}

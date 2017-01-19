@@ -24,9 +24,6 @@
     <ClCompile Include="sha256.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Identification.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BinaryDataGen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Receipt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Identification.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sha256.h">
