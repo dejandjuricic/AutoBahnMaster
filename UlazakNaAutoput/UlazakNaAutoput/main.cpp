@@ -5,6 +5,7 @@
 #include "CSVData.h"
 #include "DialogBox.h"
 #include "Login.h"
+#include "Node.h"
 
 int main(int argc, char* argv[])
 {
@@ -62,9 +63,12 @@ int main(int argc, char* argv[])
 
 
 	*/
+	/*
 	ABM::BinaryDataGen bdg("users.dat");
 	ABM::Login log("users.dat");
-	
+	*/
+
+	ABM::NodeNetwork();
 
 	system("pause");
 }
