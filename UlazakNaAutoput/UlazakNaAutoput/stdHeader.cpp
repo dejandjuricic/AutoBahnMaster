@@ -17,6 +17,22 @@ int longestStr(std::vector<std::string>& vec) noexcept
 	return result;
 }
 
+int doesUsernameExist(std::fstream & file, std::string& userName) noexcept
+{
+	char tempUsername[26];
+	char tempPassword[65];
+	file.seekg(0);
+	while (file.read(tempUsername, 26)) //Checking if the username already exists
+	{
+		if (userName == tempUsername) return file.tellg();
+		file.read(tempPassword, 65);
+	}
+	file.clear(); // Clears the EOF flag from the file
+	file.seekg(0, std::ios::end); //Moves file cursor to the end
+
+	return -1;
+}
+
 const char* LoginError::what() const
 {
 	return "Login Error";

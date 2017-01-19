@@ -4,13 +4,13 @@ namespace ABM
 {
 	BinaryDataGen::BinaryDataGen(const char* fileName) noexcept(false)
 	{
-		struct
+		struct ToWrite
 		{
 			char userName[26];
 			char password[65];//Size is one bigger to accomodate string terminator
 		}toWrite;
 
-		std::ofstream file(fileName, std::ios::out | std::ios::binary | std::ios::app);//Opening file append, binary mode
+		std::fstream file(fileName,std::ios::in | std::ios::out | std::ios::binary );//Opening file in binary mode
 
 		if (!file.is_open()) throw std::ios::badbit;
 
@@ -36,6 +36,8 @@ namespace ABM
 						throw RegistrationError({ "Invalid character in username", "Only dots and alphanumeric characters are allowed." });
 				}
 
+				if (doesUsernameExist(file, userName) != -1) throw RegistrationError({ "Username already exists, try using another one." });
+				
 				std::cout << "Password: ";
 				std::string password;
 
