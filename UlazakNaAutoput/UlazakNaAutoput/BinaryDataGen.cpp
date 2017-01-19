@@ -59,7 +59,7 @@ namespace ABM
 						}
 						break;
 					default:
-						if (isalnum(c))//Chekcs if character is a character
+						if (c>=32 && c<=126)//Chekcs if character is a valid password character
 						{
 							std::cout << '*';//Mask every input with *
 							password += c;//Add the real input to password
