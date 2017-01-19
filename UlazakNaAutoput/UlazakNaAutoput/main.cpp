@@ -4,6 +4,7 @@
 #include "Menu.h"
 #include "CSVData.h"
 #include "DialogBox.h"
+#include "Login.h"
 
 int main(int argc, char* argv[])
 {
@@ -61,7 +62,8 @@ int main(int argc, char* argv[])
 
 
 	*/
-	ABM::BinaryDataGen x("users.dat");
+	ABM::BinaryDataGen bdg("users.dat");
+	ABM::Login log("users.dat");
 	
 
 	system("pause");

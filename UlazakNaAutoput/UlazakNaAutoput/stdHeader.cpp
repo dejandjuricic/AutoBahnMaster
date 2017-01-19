@@ -25,7 +25,7 @@ int doesUsernameExist(std::fstream & file, std::string& userName) noexcept
 	while (file.read(tempUsername, 26)) //Checking if the username already exists
 	{
 		if (userName == tempUsername) return file.tellg();
-		file.read(tempPassword, 65);
+		file.read(tempPassword, 65); //Skips the password and moves on to the next username
 	}
 	file.clear(); // Clears the EOF flag from the file
 	file.seekg(0, std::ios::end); //Moves file cursor to the end
@@ -33,12 +33,9 @@ int doesUsernameExist(std::fstream & file, std::string& userName) noexcept
 	return -1;
 }
 
-const char* LoginError::what() const
-{
-	return "Login Error";
-}
 
-const char * RegistrationError::what() const
+
+const char * userException::what() const
 {
 	std::string returner;
 
@@ -48,9 +45,9 @@ const char * RegistrationError::what() const
 	return returner.c_str();
 }
 
-std::vector<std::string> RegistrationError::list() const
+std::vector<std::string> userException::list() const
 {
 	return message;
 }
 
-RegistrationError::RegistrationError(std::initializer_list<std::string> l) : message(l) {}
+userException::userException(std::initializer_list<std::string> l) : message(l) {}
